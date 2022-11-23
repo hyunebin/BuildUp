@@ -1,5 +1,6 @@
 package com.buildup.bu.Persist.Entity;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,20 +13,17 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Getter
-@Table(uniqueConstraints = {
-        @UniqueConstraint(name="email_phone_check",
-            columnNames = {"email", "phone"})})
-public class User extends BaseEntity{
+public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String phone;
-    String age;
-    String email;
-    String name;
-
-    String verifyCode;
-    boolean verify;
-
-
+    @Column(unique = true)
+    String teamName;
+    String region;
+    @NotNull
+    Integer teamSize;
+    String gameType;
+    String teamImg;
+    String level;
+    String intro;
 }

@@ -18,8 +18,7 @@ import javax.persistence.Id;
 public class User extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long Id;
-
+    Long id;
     String phone;
     String age;
     String email;

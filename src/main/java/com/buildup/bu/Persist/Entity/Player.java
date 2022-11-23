@@ -1,5 +1,6 @@
 package com.buildup.bu.Persist.Entity;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,5 +17,38 @@ import javax.persistence.Id;
 @Builder
 @Getter
 public class Player extends BaseEntity{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    String email;
+    String teamName;
+
+    @NotNull
+    Integer height;
+
+    @NotNull
+    Integer weight;
+
+    String sex;
+    String mainPosition;
+    String subPosition;
+    @NotNull
+    Integer shoot;
+    @NotNull
+    Integer speed;
+    @NotNull
+    Integer physical;
+    @NotNull
+    Integer pass;
+    @NotNull
+    Integer dribble;
+    @NotNull
+    Integer defend;
+    String nickname;
+
+
+
+
 
 }

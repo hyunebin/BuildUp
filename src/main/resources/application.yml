@@ -21,7 +21,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
       use-new-id-generator-mappings: false
     show-sql: true
     defer-datasource-initialization: true

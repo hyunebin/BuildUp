@@ -1,10 +1,12 @@
 package com.buildup.bu.Service;
 
-import com.buildup.bu.Model.User.SignIn;
 import com.buildup.bu.Model.User.SignUp;
+import com.buildup.bu.Persist.Entity.Users;
+
+import java.util.Optional;
 
 public interface UserService {
     //회원 가입
-    public boolean register(SignUp signUp);
+    Users register(SignUp signUp);
 
 }

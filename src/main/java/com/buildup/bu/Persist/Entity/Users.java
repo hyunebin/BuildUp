@@ -12,14 +12,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Getter
-@Table(uniqueConstraints = {
-        @UniqueConstraint(name="email_phone_check",
-            columnNames = {"email", "phone"})})
-public class User extends BaseEntity{
+public class Users extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String phone;
+    String password;
     String age;
     String email;
     String name;

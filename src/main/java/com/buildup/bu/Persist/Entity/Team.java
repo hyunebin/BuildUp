@@ -22,6 +22,7 @@ public class Team {
     String region;
     @NotNull
     Integer teamSize;
+
     String gameType;
     String teamImg;
     String level;

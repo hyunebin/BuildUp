@@ -1,4 +1,4 @@
-package com.buildup.bu.Service;
+package com.buildup.bu.Service.Mail;
 
 import com.buildup.bu.Component.MailComponent;
 import com.buildup.bu.Exception.Code.UserErrorCode;
@@ -8,21 +8,20 @@ import com.buildup.bu.Persist.Entity.Users;
 import com.buildup.bu.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImp implements UserService{
-    private static final String SUBJECT = "안녕하세요 인증확인 메일 입니다.";
-    private final MailComponent mailComponent;
+public class MailServiceImp implements MailService{
+    private static final String SUBJECT = "안녕하세요 Build UP! 이메일 인증입니다. ";
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final MailComponent mailComponent;
 
-    @Override
-    public Users register(SignUp signUp) {
+
+    public String send(SignUp signUp){
         Optional<Users> users = userRepository.findByEmail(signUp.getEmail());
 
         if(users.isPresent()){
@@ -30,14 +29,10 @@ public class UserServiceImp implements UserService{
         }
         //10자리 랜덤 String 생성
         String code  = RandomStringUtils.random(10,true,true);
-        signUp.setPassword(passwordEncoder.encode(signUp.getPassword()));
         signUp.setVerifyCode(code);
         mailComponent.sendMail(signUp.getEmail(),SUBJECT,getVerificationEmailBody(signUp.getEmail(),signUp.getName(),code));
-        Users user = userRepository.save(SignUp.of(signUp));
-
-        return user;
+        return code;
     }
-
     private String getVerificationEmailBody(String email, String name, String code){
         StringBuilder stringBuilder = new StringBuilder();
         return stringBuilder
@@ -49,6 +44,4 @@ public class UserServiceImp implements UserService{
                 .append(code)
                 .toString();
     }
-
-
 }

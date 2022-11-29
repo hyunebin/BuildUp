@@ -33,3 +33,12 @@ spring:
     url: jdbc:h2:mem:dividend
     username: sa
     password:
+      
+  redis:
+    lettuce:
+      pool:
+        max-active: 5 #pool에 할당될 커넥션 최대수
+        max-idle: 5 #pool의 "idel" 커넥션 최댜수
+        min-idle: 2 #pool애서 관리하는 idle 커넥션 최소 수
+    host: 127.0.0.1
+    port: 6379

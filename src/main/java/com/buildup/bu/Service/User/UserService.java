@@ -1,4 +1,4 @@
-package com.buildup.bu.Service;
+package com.buildup.bu.Service.User;
 
 import com.buildup.bu.Model.User.SignIn;
 import com.buildup.bu.Model.User.SignUp;

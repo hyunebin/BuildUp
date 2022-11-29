@@ -23,13 +23,10 @@ public class Player extends BaseEntity{
 
     String email;
     String teamName;
-
     @NotNull
     Integer height;
-
     @NotNull
     Integer weight;
-
     String sex;
     String mainPosition;
     String subPosition;

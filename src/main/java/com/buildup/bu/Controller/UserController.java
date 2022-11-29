@@ -2,13 +2,11 @@ package com.buildup.bu.Controller;
 
 import com.buildup.bu.Model.User.SignUp;
 import com.buildup.bu.Persist.Entity.Users;
-import com.buildup.bu.Service.UserService;
+import com.buildup.bu.Service.User.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import com.buildup.bu.Service.Team.TeamServiceImp;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

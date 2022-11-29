@@ -1,5 +1,4 @@
-package com.buildup.bu.Service;
-
+package com.buildup.bu.Service.User;
 import com.buildup.bu.Component.MailComponent;
 import com.buildup.bu.Exception.Code.UserErrorCode;
 import com.buildup.bu.Exception.UserException;
@@ -10,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service

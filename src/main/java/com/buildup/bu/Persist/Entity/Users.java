@@ -18,9 +18,9 @@ public class Users extends BaseEntity{
     Long id;
     String phone;
     String password;
-    String age;
     String email;
     String name;
+    String type;
 
     String verifyCode;
     boolean verify;

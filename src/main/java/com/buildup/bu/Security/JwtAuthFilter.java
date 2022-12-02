@@ -19,9 +19,8 @@ import java.io.IOException;
 import java.util.Arrays;
 
 @RequiredArgsConstructor
-public class JwtAuthFilter extends GenericFilterBean {
+public class JwtAuthFilter implements Filter {
     private final TokenService tokenService;
-    private final UserRepository userRepository;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -29,8 +28,7 @@ public class JwtAuthFilter extends GenericFilterBean {
 
         if (token != null && tokenService.verifyToken(token)) {
             String email = tokenService.getUid(token);
-
-            Users users = userRepository.findByEmail(email).orElseThrow(()-> new UserException(UserErrorCode.ALREADY_EXISTS_USER));
+            Users users = tokenService.findByEmail(email);
 
             Authentication auth = getAuthentication(users);
             SecurityContextHolder.getContext().setAuthentication(auth);

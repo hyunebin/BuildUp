@@ -1,10 +1,15 @@
 package com.buildup.bu.Service.Oauth;
 
+import com.buildup.bu.Exception.Code.UserErrorCode;
+import com.buildup.bu.Exception.UserException;
+import com.buildup.bu.Persist.Entity.Users;
+import com.buildup.bu.Repository.UserRepository;
 import com.buildup.bu.Security.Token;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -12,12 +17,17 @@ import java.util.Base64;
 import java.util.Date;
 
 @Service
+@RequiredArgsConstructor
 public class TokenService {
     private String secretKey = "token-secret-key";
-
+    private UserRepository userRepository;
     @PostConstruct
     protected void init() {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+    }
+
+    public Users findByEmail(String email){
+        return userRepository.findByEmail(email).orElseThrow(()->new UserException(UserErrorCode.ALREADY_EXISTS_USER));
     }
 
     public Token generateToken(String uid, String role) {

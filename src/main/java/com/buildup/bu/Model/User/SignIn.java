@@ -1,5 +1,9 @@
 package com.buildup.bu.Model.User;
 
-public class SignIn {
+import lombok.Getter;
 
+@Getter
+public class SignIn {
+    private String email;
+    private String password;
 }

@@ -27,7 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/token/**").permitAll()
+                .antMatchers("/token/**","/signup","/signin")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .oauth2Login()//oauth 사용

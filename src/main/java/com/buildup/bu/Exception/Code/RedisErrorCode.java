@@ -6,8 +6,9 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
-public enum TeamErrorCode {
-    AlREADY_EXIST_TEAM(HttpStatus.BAD_REQUEST,"이미 사용중인 구단명입니다");
+public enum RedisErrorCode {
+    NONEXISTENT_CERTIFY_CODE(HttpStatus.BAD_REQUEST, "존재하지 않는 인증 코드입니다.");
+
     private final HttpStatus httpStatus;
-    private final String errorMessage;
+    private final String errorMesssage;
 }

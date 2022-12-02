@@ -16,6 +16,7 @@ public class SignUp {
     String type;
     String verifyCode;
 
+
     public static Users of(SignUp signUp){
         return Users.builder()
                 .phone(signUp.getPhone())
@@ -23,10 +24,8 @@ public class SignUp {
                 .email(signUp.getEmail())
                 .type("Email")
                 .name(signUp.getName())
-                .verifyCode(signUp.getVerifyCode())
+
                 .build();
     }
-
-
 
 }

@@ -3,7 +3,7 @@ spring:
     host: smtp.gmail.com #smtp 서버 주소
     port: 587
     username: dev.pch09@gmail.com
-    password: 
+    password: qimbbrqrswrdhsuc
     properties:
       mail:
         smtp:
@@ -21,15 +21,28 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
       use-new-id-generator-mappings: false
     show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     defer-datasource-initialization: true
+
   mvc:
     path match:
       matching-strategy: ant_path_matcher
+
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:dividend
-    username: sa
-    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/buildup?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: "root"
+    password: "0234"
+      
+  redis:
+    lettuce:
+      pool:
+        max-active: 5 #pool에 할당될 커넥션 최대수
+        max-idle: 5 #pool의 "idel" 커넥션 최댜수
+        min-idle: 2 #pool애서 관리하는 idle 커넥션 최소 수
+    host: 127.0.0.1
+    port: 6379

@@ -7,7 +7,7 @@ import com.buildup.bu.Model.User.SignUp;
 import com.buildup.bu.Persist.Entity.Users;
 import com.buildup.bu.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,9 +16,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserServiceImp implements UserService{
     private static final String SUBJECT = "안녕하세요 Build UP! 이메일 인증입니다. ";
-    private final MailComponent mailComponent;
+
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Users register(SignUp signUp) {
@@ -27,7 +27,7 @@ public class UserServiceImp implements UserService{
         if(users.isPresent()){
             throw new UserException(UserErrorCode.ALREADY_EXISTS_USER);
         }
-        signUp.setPassword(passwordEncoder.encode(signUp.getPassword()));
+//        signUp.setPassword(passwordEncoder.encode(signUp.getPassword()));
 
         Users user = userRepository.save(SignUp.of(signUp));
 

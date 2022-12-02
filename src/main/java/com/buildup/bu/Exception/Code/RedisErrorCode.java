@@ -4,13 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-@AllArgsConstructor
 @Getter
-public enum UserErrorCode {
-    ALREADY_EXISTS_USER(HttpStatus.BAD_REQUEST, "이미 존재하는 유저 입니다.");
+@AllArgsConstructor
+public enum RedisErrorCode {
+    NONEXISTENT_CERTIFY_CODE(HttpStatus.BAD_REQUEST, "존재하지 않는 인증 코드입니다.");
 
     private final HttpStatus httpStatus;
-
-    private final String errorMessage;
-
+    private final String errorMesssage;
 }

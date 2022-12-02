@@ -1,7 +1,9 @@
 package com.buildup.bu.Controller;
 
+import com.buildup.bu.Model.User.SignIn;
 import com.buildup.bu.Model.User.SignUp;
 import com.buildup.bu.Persist.Entity.Users;
+import com.buildup.bu.Security.Token;
 import com.buildup.bu.Service.User.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,12 @@ public class UserController {
     public ResponseEntity<?> userSignUp(@RequestBody SignUp signUp){
         Users users = userService.register(signUp);
         return ResponseEntity.ok().body(users);
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<?> userSignIn(@RequestBody SignIn sign){
+        Token token = userService.login(sign);
+        return ResponseEntity.ok().body(token);
     }
 
     @GetMapping("/test")

@@ -13,6 +13,8 @@ public class SignUp {
     String password;
     String email;
     String name;
+    String type;
+    String verifyCode;
 
 
     public static Users of(SignUp signUp){
@@ -20,6 +22,7 @@ public class SignUp {
                 .phone(signUp.getPhone())
                 .password(signUp.getPassword())
                 .email(signUp.getEmail())
+                .type("Email")
                 .name(signUp.getName())
 
                 .build();

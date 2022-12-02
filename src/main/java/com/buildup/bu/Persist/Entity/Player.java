@@ -30,6 +30,7 @@ public class Player extends BaseEntity{
     String sex;
     String mainPosition;
     String subPosition;
+
     @NotNull
     Integer shoot;
     @NotNull

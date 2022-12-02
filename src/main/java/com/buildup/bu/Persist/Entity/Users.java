@@ -21,8 +21,10 @@ public class Users extends BaseEntity{
 
     String email;
     String name;
-    String verifyCode;
+    String type;
 
+    String verifyCode;
+    boolean verify;
 
 
 }

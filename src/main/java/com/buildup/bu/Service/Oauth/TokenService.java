@@ -1,5 +1,6 @@
 package com.buildup.bu.Service.Oauth;
 
+import com.buildup.bu.Config.ConstructorProperties.SecretKeyConstructorProperties;
 import com.buildup.bu.Exception.Code.UserErrorCode;
 import com.buildup.bu.Exception.UserException;
 import com.buildup.bu.Persist.Entity.Users;
@@ -19,11 +20,12 @@ import java.util.Date;
 @Service
 @RequiredArgsConstructor
 public class TokenService {
-    private String secretKey = "token-secret-key";
+    private SecretKeyConstructorProperties skcp;
     private UserRepository userRepository;
-    @PostConstruct
+    private String secretKey;
+    @PostConstruct //의존성 주입이 이루어진 후 초기화를 수행하는 메서드이다.
     protected void init() {
-        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+        secretKey = Base64.getEncoder().encodeToString(skcp.getSecretKey().getBytes());
     }
 
     public Users findByEmail(String email){

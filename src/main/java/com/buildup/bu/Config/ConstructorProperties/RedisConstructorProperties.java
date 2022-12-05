@@ -1,4 +1,4 @@
-package com.buildup.bu.Config;
+package com.buildup.bu.Config.ConstructorProperties;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @RequiredArgsConstructor
 @ConstructorBinding
 @ConfigurationProperties("spring.redis")
-public class ConstructorProperties {
+public class RedisConstructorProperties {
     private final String host;
     private final int port;
 }
